@@ -10,3 +10,33 @@ mongoose.model('User', userSchema);
 mongoose.model(it automatically create or search a collection by name with lower letters including s(plural), userSchema);
 mongoose.model(it automatically create or search a collection by name with lower letters including s(plural), userSchema,
 if we pass third argument here then it will strictly match with this collection name);
+
+all users
+https://signinup.herokuapp.com/api/auth/users
+
+register user
+https://signinup.herokuapp.com/api/auth/register
+
+send these fields in body
+{
+    "name":"john",
+    "email":"john@gmail.com",
+    "password":"12345678",
+    "phone":"121365866",
+    "role":"Admin"
+}
+
+login user
+https://signinup.herokuapp.com/api/auth/login
+
+send these fields in body
+{
+    "email":"john@gmail.com",
+    "password":"12345678"
+}
+
+user info or profile
+https://signinup.herokuapp.com/api/auth/user-info
+in headers
+KEY = x-access-token
+value = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZDI4OWY3OWY1ZmY1OWRjZTBiNzk5MiIsImlhdCI6MTY0MTE4ODAwMSwiZXhwIjoxNjQxMjc0NDAxfQ.zmH-oiCk3kbjA37Hir4Apiz-pn9xit4N28dVEOj1kAk (generated when user logged in successfully)
