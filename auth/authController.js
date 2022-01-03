@@ -42,12 +42,17 @@ router.post('/register', (req, res) => {
 })
 
 //login user
-router.get('/login', (req, res) => {
+router.post('/login', (req, res) => {
+
     User.findOne({email:req.body.email}, (err, data) => {
+
         if(err) return res.status(500).send({auth:false, token:'Error While Login.'})
+
         if(!data) return res.status(500).send({auth:false, token:'No User Found.'})
+
         const passIsValid = bcrypt.compareSync(req.body.password, data.password)
         if(!passIsValid) return res.status(500).send({auth:false, token:'Invalid Password'})
+
         var token = jwt.sign({id:data._id}, config.secret, {expiresIn:86400})
         res.send({auth:true, token: token})
     })
